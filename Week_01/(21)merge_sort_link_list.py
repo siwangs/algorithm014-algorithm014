@@ -26,6 +26,11 @@ class Solution:
 
         return prehead.next
 
-
-a = [2, 3, 4, 5, 6, 7]
-a[:m]
+          res, heap = [], []
+           for i in range(len(nums)):
+                heapq.heappush(heap, (-nums[i], i))
+                if i + 1 >= k:
+                    while heap and heap[0][1] < i + 1 - k:
+                        heapq.heappop(heap)
+                    res.append(-heap[0][0])
+            return res
